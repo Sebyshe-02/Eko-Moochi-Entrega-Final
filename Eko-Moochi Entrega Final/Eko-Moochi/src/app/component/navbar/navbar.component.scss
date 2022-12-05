@@ -1,0 +1,125 @@
+$breakpoints: (
+    sm : 540px,
+    md : 786px,
+    lg : 992px,
+);
+
+@mixin media-up($breakpoint) {
+    @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
+        @content;
+    }
+}
+
+.header{
+    background: rebeccapurple;
+    margin: 0;
+    padding: 0;
+    opacity: .9;
+    height: 100px;
+    color: white;
+    padding: 2rem 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.header a{
+    color: white;
+    text-decoration: none;
+}
+
+.logo{
+    letter-spacing: 15px;
+    font-size: 20px;
+    @include media-up(lg){
+        align-items: center;
+    }
+}
+
+.logo-nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include media-up(lg){
+        align-items: center;
+        margin: auto;
+    }
+}
+
+.navBar ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @include media-up(lg){
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #2c3e50;
+        top: 100px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+}
+
+.navBar ul li{
+    display: inline-block;
+    @include media-up(lg){
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+}
+
+.navBar ul li a{
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: all 0.4s linear;
+    border-radius: 5px;
+    @include media-up(lg){
+        font-size: 20px;
+    }
+    
+}
+
+.navBar ul li a:hover{
+    background: rgb(167, 101, 232);
+    @include media-up(lg){
+        background: none;
+        color: red;
+
+    }
+}
+
+.checkbtn {
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 70px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: none;
+    @include media-up(lg){
+        display: block;
+        text-align: center;
+        line-height: 10px;
+    }
+}
+
+#check {
+    display: none;
+}
+
+li a:hover, li a.active{
+    @include media-up(lg){
+        background: none;
+        color: red;
+    }
+}
+
+#check:checked ~ ul{
+    @include media-up(lg){
+        left: 0;
+    }
+}
